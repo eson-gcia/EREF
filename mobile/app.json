@@ -7,6 +7,9 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "plugins": [
+      "expo-splash-screen"
+    ]
   }
 }
