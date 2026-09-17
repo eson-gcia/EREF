@@ -6,10 +6,22 @@
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.erefmobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "plugins": [
       "expo-splash-screen"
-    ]
+    ],
+    "android": {
+      "package": "com.anonymous.erefmobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7e1ae089-3204-499b-8e89-ce063ac2782b"
+      }
+    }
   }
 }

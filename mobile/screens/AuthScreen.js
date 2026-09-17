@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
@@ -12,6 +11,9 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useInventory } from "../context/InventoryContext";
+
+import { AnimatedScreen } from "../components/animations/AnimatedScreen";
+import { AnimatedTouchableOpacity } from "../components/animations/AnimatedTouchableOpacity";
 
 const BRAND = "#16567b";
 
@@ -218,6 +220,7 @@ export function AuthScreen() {
   const isSignIn = mode === "signin";
 
   return (
+    <AnimatedScreen>
     <KeyboardAvoidingView
       style={keyboardAvoidingViewStyle}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -291,11 +294,11 @@ export function AuthScreen() {
               style={passwordInputStyle}
             />
 
-            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <AnimatedTouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Text style={toggleTextStyle}>
                 {showPassword ? "Hide" : "Show"}
               </Text>
-            </TouchableOpacity>
+            </AnimatedTouchableOpacity>
           </View>
         </View>
         {mode === "signup" && (
@@ -317,13 +320,13 @@ export function AuthScreen() {
                 style={passwordInputStyle}
               />
 
-              <TouchableOpacity
+              <AnimatedTouchableOpacity
                 onPress={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 <Text style={toggleTextStyle}>
                   {showConfirmPassword ? "Hide" : "Show"}
                 </Text>
-              </TouchableOpacity>
+              </AnimatedTouchableOpacity>
             </View>
           </View>
         )}
@@ -334,7 +337,7 @@ export function AuthScreen() {
         ) : null}
 
         {isSignIn ? (
-          <TouchableOpacity
+          <AnimatedTouchableOpacity
             onPress={() => {
               setMode("signup");
               setError("");
@@ -348,9 +351,9 @@ export function AuthScreen() {
                 Sign Up
               </Text>
             </Text>
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         ) : (
-          <TouchableOpacity
+          <AnimatedTouchableOpacity
             onPress={() => {
               setMode("signin");
               setError("");
@@ -364,9 +367,9 @@ export function AuthScreen() {
                 Sign In Instead
               </Text>
             </Text>
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         )}
-        <TouchableOpacity
+        <AnimatedTouchableOpacity
           onPress={handleSubmit}
           disabled={isLoading}
           style={submitButtonStyle(isLoading)}
@@ -374,10 +377,10 @@ export function AuthScreen() {
           <Text style={submitButtonTextStyle}>
             {isLoading ? "Please wait..." : isSignIn ? "Sign In" : "Sign Up"}
           </Text>
-        </TouchableOpacity>
+        </AnimatedTouchableOpacity>
 
         {isSignIn && (
-          <TouchableOpacity
+          <AnimatedTouchableOpacity
             onPress={() => navigation.navigate("ForgotPassword")}
           >
             <Text style={switchLinkTextStyle}>
@@ -387,9 +390,10 @@ export function AuthScreen() {
                 Reset Password
               </Text>
             </Text>
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         )}
       </ScrollView>
     </KeyboardAvoidingView>
+      </AnimatedScreen>
   );
 }

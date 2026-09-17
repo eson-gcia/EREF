@@ -4,11 +4,13 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from "react-native";
+
+import { AnimatedScreen } from "../components/animations/AnimatedScreen";
+import { AnimatedTouchableOpacity } from "../components/animations/AnimatedTouchableOpacity";
 
 const BRAND = "#16567b";
 
@@ -134,6 +136,7 @@ export function CreateNewPasswordScreen({ navigation }) {
   };
 
   return (
+    <AnimatedScreen>
     <KeyboardAvoidingView
       style={keyboardAvoidingViewStyle}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -180,13 +183,13 @@ export function CreateNewPasswordScreen({ navigation }) {
               style={inputStyle}
             />
 
-            <TouchableOpacity
+            <AnimatedTouchableOpacity
               onPress={() => setShowPassword(!showPassword)}
             >
               <Text style={toggleTextStyle}>
                 {showPassword ? "Hide" : "Show"}
               </Text>
-            </TouchableOpacity>
+            </AnimatedTouchableOpacity>
           </View>
         </View>
 
@@ -208,7 +211,7 @@ export function CreateNewPasswordScreen({ navigation }) {
               style={inputStyle}
             />
 
-            <TouchableOpacity
+            <AnimatedTouchableOpacity
               onPress={() =>
                 setShowConfirmPassword(!showConfirmPassword)
               }
@@ -216,7 +219,7 @@ export function CreateNewPasswordScreen({ navigation }) {
               <Text style={toggleTextStyle}>
                 {showConfirmPassword ? "Hide" : "Show"}
               </Text>
-            </TouchableOpacity>
+            </AnimatedTouchableOpacity>
           </View>
         </View>
 
@@ -226,15 +229,16 @@ export function CreateNewPasswordScreen({ navigation }) {
           </Text>
         ) : null}
 
-        <TouchableOpacity
+        <AnimatedTouchableOpacity
           onPress={handleSavePassword}
           style={saveButtonStyle}
         >
           <Text style={saveButtonTextStyle}>
             Save Password
           </Text>
-        </TouchableOpacity>
+        </AnimatedTouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
+      </AnimatedScreen>
   );
 }

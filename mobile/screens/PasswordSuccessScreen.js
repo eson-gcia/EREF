@@ -3,11 +3,13 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from "react-native";
+
+import { AnimatedScreen } from "../components/animations/AnimatedScreen";
+import { AnimatedTouchableOpacity } from "../components/animations/AnimatedTouchableOpacity";
 
 const BRAND = "#16567b";
 const SUCCESS = "#44AE5F";
@@ -90,6 +92,7 @@ const backToSignInTextStyle = {
 
 export function PasswordSuccessScreen({ navigation }) {
   return (
+    <AnimatedScreen>
     <KeyboardAvoidingView
       style={keyboardAvoidingViewStyle}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -125,7 +128,7 @@ export function PasswordSuccessScreen({ navigation }) {
           </Text>
         </View>
 
-        <TouchableOpacity
+        <AnimatedTouchableOpacity
           activeOpacity={0.85}
           onPress={() =>
             navigation.reset({
@@ -138,8 +141,9 @@ export function PasswordSuccessScreen({ navigation }) {
           <Text style={backToSignInTextStyle}>
             Back to Sign In
           </Text>
-        </TouchableOpacity>
+        </AnimatedTouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
+      </AnimatedScreen>
   );
 }

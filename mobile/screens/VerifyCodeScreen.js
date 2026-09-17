@@ -4,12 +4,14 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+import { AnimatedScreen } from "../components/animations/AnimatedScreen";
+import { AnimatedTouchableOpacity } from "../components/animations/AnimatedTouchableOpacity";
 
 const BRAND = "#16567b";
 
@@ -182,6 +184,7 @@ export function VerifyCodeScreen() {
   };
 
   return (
+    <AnimatedScreen>
     <KeyboardAvoidingView
       style={keyboardAvoidingViewStyle}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -229,13 +232,14 @@ export function VerifyCodeScreen() {
             Not your email?
           </Text>
 
-          <TouchableOpacity
+          <AnimatedTouchableOpacity
             onPress={() => navigation.goBack()}
+            style={changeEmailLinkStyle}
           >
             <Text style={changeEmailLinkStyle}>
               Change Email
             </Text>
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         </View>
 
         <View style={codeContainerStyle}>
@@ -261,11 +265,11 @@ export function VerifyCodeScreen() {
             Did not receive the code yet?
           </Text>
 
-          <TouchableOpacity onPress={handleRefreshCode}>
+          <AnimatedTouchableOpacity onPress={handleRefreshCode}>
             <Text style={refreshLinkStyle}>
               Refresh Code
             </Text>
-          </TouchableOpacity>
+          </AnimatedTouchableOpacity>
         </View>
 
         {error ? (
@@ -274,7 +278,7 @@ export function VerifyCodeScreen() {
           </Text>
         ) : null}
 
-        <TouchableOpacity
+        <AnimatedTouchableOpacity
           onPress={handleChangePassword}
           activeOpacity={0.8}
           style={changePasswordButtonStyle}
@@ -282,8 +286,9 @@ export function VerifyCodeScreen() {
           <Text style={changePasswordButtonTextStyle}>
             Change Password
           </Text>
-        </TouchableOpacity>
+        </AnimatedTouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
+      </AnimatedScreen>
   );
 }

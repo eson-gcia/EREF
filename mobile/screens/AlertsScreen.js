@@ -1,28 +1,15 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useInventory } from "../context/InventoryContext";
+import { COLORS } from "../src/theme/colors";
 
-const BRAND = "#8B6F47";
-
-const COLORS = {
-  background: "#FFFDF7",
-  card: "#F7F1E3",
-  cardBorder: "#E8DDC8",
-  text: "#3E3428",
-  secondaryText: "#8A7A66",
-
-  critical: "#C95C54",
-  high: "#D8894A",
-  moderate: "#C9A44C",
-  low: "#6F9B72",
-
-  white: "#FFFFFF",
-};
+import { AnimatedScreen } from "../components/animations/AnimatedScreen";
+import { AnimatedTouchableOpacity } from "../components/animations/AnimatedTouchableOpacity";
 
 const scrollContentStyle = {
   paddingHorizontal: 20,
-  paddingTop: 52,
+  paddingTop: 40,
   paddingBottom: 120,
 };
 
@@ -68,12 +55,12 @@ const alertIconStyle = (urgency) => ({
 
   backgroundColor:
     urgency === "critical"
-      ? COLORS.critical
+      ? COLORS.danger
       : urgency === "high"
-        ? COLORS.high
+        ? COLORS.warning
         : urgency === "moderate"
-          ? COLORS.moderate
-          : COLORS.low,
+          ? COLORS.warning
+          : COLORS.success,
 });
 
 const alertTextContainerStyle = {
@@ -87,7 +74,7 @@ const alertTitleStyle = {
 };
 
 const alertMessageStyle = {
-  color: COLORS.secondaryText,
+  color: COLORS.muted,
   fontSize: 12,
   marginTop: 3,
   lineHeight: 17,
@@ -97,7 +84,7 @@ const unreadDotStyle = {
   width: 8,
   height: 8,
   borderRadius: 4,
-  backgroundColor: COLORS.critical,
+  backgroundColor: COLORS.danger,
   marginLeft: 8,
 };
 export function AlertsScreen() {
@@ -105,71 +92,101 @@ export function AlertsScreen() {
   const { alerts, markAlertRead, getItemById } = useInventory();
 
   return (
-    <ScrollView
-      className="flex-1 bg-white"
-      contentContainerStyle={scrollContentStyle}
-    >
-      <View style={headerContainerStyle}>
-        <Text style={headerTitleStyle}>Alerts</Text>
-      </View>
-
-      {alerts.length === 0 ? (
-        <View className="items-center mt-20 px-6">
-          <Ionicons name="checkmark-circle-outline" size={56} color="#86efac" />
-          <Text className="text-slate-700 font-semibold mt-3 text-center">
-            No active alerts
-          </Text>
-          <Text className="text-slate-400 text-center mt-1">
-            You will be notified when items become high risk or near expiry.
-          </Text>
+    <AnimatedScreen direction="right">
+      <ScrollView
+        style={{ flex: 1, backgroundColor: COLORS.background }}
+        contentContainerStyle={scrollContentStyle}
+      >
+        <View style={headerContainerStyle}>
+          <Text style={headerTitleStyle}>Alerts</Text>
         </View>
-      ) : (
-        alerts.map((alert) => (
-          <TouchableOpacity
-            key={alert.id}
-            activeOpacity={0.85}
-            onPress={() => {
-              markAlertRead(alert.itemId);
 
-              const item = getItemById(alert.itemId);
-
-              if (item) {
-                navigation.navigate("Shelf");
-              }
+        {alerts.length === 0 ? (
+          <View
+            style={{
+              alignItems: "center",
+              marginTop: 80,
+              paddingHorizontal: 24,
             }}
-            style={alertCardStyle(alert.read)}
           >
-            <View style={alertContentStyle}>
-              <View style={alertIconStyle(alert.urgency)}>
-                <Ionicons
-                  name="warning-outline"
-                  size={20}
-                  color={COLORS.white}
-                />
-              </View>
+            <Ionicons
+              name="checkmark-circle-outline"
+              size={56}
+              color={COLORS.success}
+            />
+            <Text
+              style={{
+                color: COLORS.text,
+                fontSize: 16,
+                fontWeight: "600",
+                marginTop: 12,
+                textAlign: "center",
+              }}
+            >
+              No active alerts
+            </Text>
+            <Text
+              style={{
+                color: COLORS.muted,
+                fontSize: 14,
+                marginTop: 4,
+                textAlign: "center",
+              }}
+            >
+              You will be notified when items become high risk or near expiry.
+            </Text>
+          </View>
+        ) : (
+          alerts.map((alert) => (
+            <AnimatedTouchableOpacity
+              key={alert.id}
+              activeOpacity={0.85}
+              onPress={() => {
+                markAlertRead(alert.itemId);
 
-              <View style={alertTextContainerStyle}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <Text style={alertTitleStyle} numberOfLines={1}>
-                    {alert.title}
-                  </Text>
+                const item = getItemById(alert.itemId);
 
-                  {!alert.read && <View style={unreadDotStyle} />}
+                if (item) {
+                  navigation.navigate("Shelf");
+                }
+              }}
+              style={alertCardStyle(alert.read)}
+            >
+              <View style={alertContentStyle}>
+                <View style={alertIconStyle(alert.urgency)}>
+                  <Ionicons
+                    name="warning-outline"
+                    size={20}
+                    color={COLORS.white}
+                  />
                 </View>
 
-                <Text style={alertMessageStyle} numberOfLines={2}>
-                  {alert.message}
-                </Text>
+                <View style={alertTextContainerStyle}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text
+                      style={[alertTitleStyle, { flex: 1 }]}
+                      numberOfLines={1}
+                    >
+                      {alert.title}
+                    </Text>
+
+                    {!alert.read && <View style={unreadDotStyle} />}
+                  </View>
+
+                  <Text style={alertMessageStyle} numberOfLines={2}>
+                    {alert.message}
+                  </Text>
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-        ))
-      )}
-    </ScrollView>
+            </AnimatedTouchableOpacity>
+          ))
+        )}
+      </ScrollView>
+      </AnimatedScreen>
   );
 }

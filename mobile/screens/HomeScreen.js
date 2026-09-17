@@ -358,7 +358,7 @@ export function HomeScreen() {
           return (
             <TouchableOpacity
               key={item.label}
-              activeOpacity={0.85}
+              activeOpacity={0.75}
               onPress={() => navigation.navigate("Shelf")}
               style={categoryItemStyle}
             >
@@ -367,8 +367,8 @@ export function HomeScreen() {
                 <View style={categoryIconContainerStyle}>
                   <Ionicons
                     name={categoryIcon[item.label]}
-                    size={22}
-                    color={BRAND}
+                    size={25}
+                    color="#f6f6f6"
                   />
                 </View>
 

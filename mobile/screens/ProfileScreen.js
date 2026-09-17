@@ -130,7 +130,7 @@ const settingButtonStyle = {
 
 const settingButtonTextContainerStyle = {
   flex: 1,
-  marginLeft: 12,
+  marginLeft: 1,
 };
 
 const accountSectionTitleStyle = {
@@ -425,18 +425,18 @@ export function ProfileScreen() {
         </View>
 
         {/* Name */}
-        <Text style={profileNameStyle}>{user?.name || "Lathrell Pogi"}</Text>
+        <Text style={profileNameStyle}>{user?.name || "Lathrell"}</Text>
 
         {/* Email */}
         <Text style={profileEmailStyle}>
-          {user?.email || "lathrellpogi@gmail.com"}
+          {user?.email || "lathrell@gmail.com"}
         </Text>
       </View>
 
       {/* Push Notifications */}
       <View style={settingRowStyle}>
         <View style={settingIconContainerStyle}>
-          <Ionicons name="notifications-outline" size={21} color={BRAND} />
+          <Ionicons name="notifications-outline" size={20} color={BRAND} />
         </View>
 
         <View style={settingLabelContainerStyle}>
@@ -462,7 +462,7 @@ export function ProfileScreen() {
       {/* Dark Mode */}
       <View style={settingRowStyle}>
         <View style={settingIconContainerStyle}>
-          <Ionicons name="moon-outline" size={21} color={BRAND} />
+          <Ionicons name="moon-outline" size={20} color={BRAND} />
         </View>
 
         <View style={settingLabelContainerStyle}>
@@ -487,7 +487,7 @@ export function ProfileScreen() {
 
       {/* Change Password */}
       <TouchableOpacity
-        activeOpacity={0.75}
+        activeOpacity={1}
         onPress={() => navigation.navigate("CreateNewPassword")}
         style={settingButtonStyle}
       >
@@ -506,7 +506,7 @@ export function ProfileScreen() {
 
       {/* Privacy & Terms */}
       <TouchableOpacity
-        activeOpacity={0.75}
+        activeOpacity={1}
         onPress={() => setPrivacyVisible(true)}
         style={settingButtonStyle}
       >
@@ -527,7 +527,7 @@ export function ProfileScreen() {
 
       {/* About */}
       <TouchableOpacity
-        activeOpacity={0.75}
+        activeOpacity={1}
         onPress={() => setAboutVisible(true)}
         style={settingButtonStyle}
       >
@@ -550,7 +550,7 @@ export function ProfileScreen() {
       <TouchableOpacity
         style={styles.logoutButton}
         onPress={handleLogout}
-        activeOpacity={0.75}
+        activeOpacity={1}
       >
         <View style={styles.logoutLeft}>
           <View style={styles.logoutIconContainer}>
