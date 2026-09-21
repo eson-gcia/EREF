@@ -79,7 +79,7 @@ const captureScrollContentStyle = {
 
 const headerTitleStyle = {
   fontSize: 26,
-  fontWeight: "800",
+  fontWeight: "600",
   color: COLORS.text,
   marginBottom: 6,
 };
@@ -123,7 +123,7 @@ const sectionIconBoxStyle = {
 
 const sectionTitleStyle = {
   fontSize: 16,
-  fontWeight: "700",
+  fontWeight: "600",
   color: COLORS.text,
 };
 
@@ -250,7 +250,7 @@ const ttiIconBoxStyle = {
 
 const ttiTitleStyle = {
   fontSize: 14,
-  fontWeight: "700",
+  fontWeight: "600",
   color: COLORS.text,
 };
 
@@ -375,12 +375,14 @@ const usageTextStyle = {
 };
 
 const actionButtonStyle = {
-  height: 50,
-  borderRadius: 16,
+  minHeight: 58,
+  paddingVertical: 15,
+  paddingHorizontal: 20,
+  borderRadius: 17,
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "row",
-  marginBottom: 10,
+  marginBottom: 12,
 };
 
 const addToShelfButtonStyle = {
@@ -397,16 +399,16 @@ const scanAgainButtonStyle = {
 
 const actionButtonTextStyle = {
   color: COLORS.white,
-  fontSize: 14,
-  fontWeight: "800",
-  marginLeft: 8,
+  fontSize: 16,
+  fontWeight: "600",
+  marginLeft: 9,
 };
 
 const scanAgainButtonTextStyle = {
   color: COLORS.text,
-  fontSize: 14,
-  fontWeight: "700",
-  marginLeft: 8,
+  fontSize: 16,
+  fontWeight: "600",
+  marginLeft: 9,
 };
 
 // Capture / Review styles
@@ -485,17 +487,21 @@ const galleryButtonTextStyle = {
 };
 
 const retakeButtonStyle = {
-  height: 60,
+  minHeight: 54,
+  paddingVertical: 14,
+  paddingHorizontal: 16,
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
+  borderRadius: 16,
   marginBottom: 14,
 };
 
 const retakeButtonTextStyle = {
   color: BRAND,
-  fontSize: 13,
-  fontWeight: "600",
+  fontSize: 15,
+  fontWeight: "700",
+  marginLeft: 8,
 };
 
 const fieldLabelStyle = {
@@ -519,14 +525,18 @@ const textInputStyle = {
 };
 
 const horizontalScrollContentStyle = {
-  marginBottom: 12,
+  paddingVertical: 4,
+  paddingRight: 8,
+  marginBottom: 14,
 };
 
 const categoryPillStyle = (active) => ({
-  marginRight: 8,
-  height: 36,
-  paddingHorizontal: 15,
-  borderRadius: 18,
+  minHeight: 46,
+  paddingHorizontal: 18,
+  paddingVertical: 11,
+  marginRight: 10,
+  marginBottom: 4,
+  borderRadius: 23,
   borderWidth: 1,
   borderColor: active ? BRAND : COLORS.border,
   backgroundColor: active ? BRAND : COLORS.white,
@@ -535,16 +545,18 @@ const categoryPillStyle = (active) => ({
 });
 
 const categoryPillTextStyle = (active) => ({
-  fontSize: 12,
-  fontWeight: "700",
+  fontSize: 14,
+  fontWeight: "600",
   color: active ? COLORS.white : COLORS.text,
 });
 
 const storagePillStyle = (active) => ({
-  marginRight: 8,
-  height: 36,
-  paddingHorizontal: 14,
-  borderRadius: 18,
+  minHeight: 46,
+  paddingHorizontal: 18,
+  paddingVertical: 11,
+  marginRight: 10,
+  marginBottom: 4,
+  borderRadius: 23,
   borderWidth: 1,
   borderColor: active ? BRAND : COLORS.border,
   backgroundColor: active ? "#F3E4D5" : COLORS.white,
@@ -553,67 +565,81 @@ const storagePillStyle = (active) => ({
 });
 
 const storagePillTextStyle = (active) => ({
-  fontSize: 11,
-  fontWeight: "700",
+  fontSize: 13,
+  fontWeight: "600",
   color: active ? BRAND : COLORS.muted,
 });
 
 const flagsContainerStyle = {
   flexDirection: "row",
   flexWrap: "wrap",
-  marginBottom: 16,
+  marginBottom: 18,
 };
 
 const flagPillStyle = (active) => ({
+  minHeight: 46,
   flexDirection: "row",
   alignItems: "center",
-  marginRight: 8,
-  marginBottom: 8,
-  height: 34,
-  paddingHorizontal: 10,
-  borderRadius: 17,
-  backgroundColor: active ? "#fee2e2" : "#f1f5f9",
+  justifyContent: "center",
+  marginRight: 10,
+  marginBottom: 10,
+  paddingHorizontal: 14,
+  paddingVertical: 10,
+  borderRadius: 23,
+  backgroundColor: active ? "#F9E9E5" : COLORS.white,
   borderWidth: 1,
-  borderColor: active ? "#ef4444" : COLORS.border,
+  borderColor: active ? COLORS.danger : COLORS.border,
 });
 
 const flagPillTextStyle = (active) => ({
-  fontSize: 11,
-  fontWeight: active ? "700" : "500",
-  color: active ? "#b91c1c" : "#475569",
-  marginLeft: 4,
+  fontSize: 13,
+  fontWeight: active ? "600" : "400",
+  color: active ? COLORS.danger : COLORS.muted,
+  marginLeft: 7,
 });
 
 const analyzeButtonStyle = {
-  height: 60,
-  borderRadius: 12,
+  minHeight: 58,
+  paddingVertical: 15,
+  paddingHorizontal: 20,
+  borderRadius: 17,
   backgroundColor: BRAND,
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "row",
-  marginBottom: 10,
+  marginBottom: 12,
+};
+
+const analyzeButtonTextStyle = {
+  color: COLORS.white,
+  fontSize: 16,
+  fontWeight: "700",
+  marginLeft: 9,
 };
 
 const cancelButtonStyle = {
-  height: 60,
-  borderRadius: 12,
+  minHeight: 58,
+  paddingVertical: 15,
+  paddingHorizontal: 20,
+  borderRadius: 17,
   borderWidth: 1,
   borderColor: COLORS.border,
   backgroundColor: COLORS.white,
   alignItems: "center",
   justifyContent: "center",
+  flexDirection: "row",
 };
 
 const cancelButtonTextStyle = {
   color: COLORS.muted,
-  fontSize: 14,
+  fontSize: 15,
   fontWeight: "600",
 };
 
 const buttonTextStyle = {
-  color: COLORS.BRAND,
+  color: COLORS.Brand,
   fontSize: 16,
-  fontWeight: "700",
+  fontWeight: "600",
   marginLeft: 8,
 };
 
@@ -801,7 +827,8 @@ export function CameraScreen() {
 
   if (step === "result" && preview) {
     return (
-<AnimatedScreen direction="center">        <ScrollView
+      <AnimatedScreen direction="center">
+        <ScrollView
           style={screenScrollStyle}
           contentContainerStyle={resultScrollContentStyle}
         >
@@ -818,7 +845,7 @@ export function CameraScreen() {
             style={{
               borderRadius: 16,
               overflow: "hidden",
-              backgroundColor: colors.border,
+              backgroundColor: COLORS.border,
               marginBottom: 16,
             }}
           >
@@ -956,7 +983,7 @@ export function CameraScreen() {
                 padding: 10,
               }}
             >
-              <Text style={{ fontSize: 11, color: colors.muted }}>
+              <Text style={{ fontSize: 11, color: COLORS.muted }}>
                 Detection source
               </Text>
               <Text
@@ -1080,8 +1107,8 @@ export function CameraScreen() {
                   {analysis.cnn.spoilage.detectedIndicators.map((key) => (
                     <View key={key} style={indicatorPillStyle}>
                       <Ionicons
-                        name={FLAG_ICONS[key] || "warning-outline"}
-                        size={13}
+                        name={FLAG_ICONS[key]}
+                        size={18}
                         color={COLORS.danger}
                       />
                       <Text style={indicatorTextStyle}>
@@ -1259,25 +1286,21 @@ export function CameraScreen() {
               disabled={busy}
             >
               {busy ? (
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <ActivityIndicator color="#ffffff" />
-                  <Text
-                    style={{
-                      color: "#ffffff",
-                      fontSize: 15,
-                      fontWeight: "700",
-                      marginLeft: 8,
-                    }}
-                  >
-                    Saving...
-                  </Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <ActivityIndicator color={COLORS.white} />
+                  <Text style={actionButtonTextStyle}>Saving...</Text>
                 </View>
               ) : (
                 <>
                   <Ionicons
                     name="add-circle-outline"
-                    size={20}
-                    color="#ffffff"
+                    size={23}
+                    color={COLORS.white}
                   />
                   <Text style={actionButtonTextStyle}>Add to Shelf</Text>
                 </>
@@ -1290,7 +1313,7 @@ export function CameraScreen() {
               onPress={reset}
               disabled={busy}
             >
-              <Ionicons name="camera-outline" size={18} color={COLORS.text} />
+              <Ionicons name="camera-outline" size={21} color={COLORS.text} />
               <Text style={scanAgainButtonTextStyle}>Scan Again</Text>
             </AnimatedTouchableOpacity>
           </View>
@@ -1516,11 +1539,23 @@ export function CameraScreen() {
               style={analyzeButtonStyle}
             >
               {busy ? (
-                <ActivityIndicator color="#ffffff" />
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <ActivityIndicator color={COLORS.white} />
+                  <Text style={buttonTextStyle}>Analyzing...</Text>
+                </View>
               ) : (
                 <>
-                  <Ionicons name="scan-outline" size={18} color="#ffffff" />
-                  <Text style={buttonTextStyle}>Analyze</Text>
+                  <Ionicons
+                    name="scan-outline"
+                    size={21}
+                    color={COLORS.white}
+                  />
+                  <Text style={analyzeButtonTextStyle}>Analyze</Text>
                 </>
               )}
             </AnimatedTouchableOpacity>

@@ -1,16 +1,17 @@
-// src/theme/colors.js
 export const COLORS = {
-  primary: "#5C4033",      // Warm Earth Brown
-  primaryLight: "#16567B", // Accent Teal/Blue
-  background: "#FFF9F0",   // Cream Base
-  card: "#F8F0E3",
-  cardBorder: "#E6D8C8",
-  text: "#2F241F",
-  muted: "#7A6A60",
+  primary: "#4A3026",       // Dark Warm Earth Brown
+  primaryLight: "#124A69",  // Darker Teal/Blue Accent
+
+  background: "#F5EDE1",    // Slightly Darker Cream
+  card: "#EDE2D2",          // Darker Card
+  cardBorder: "#D4C3AF",    // Darker Border
+
+  text: "#241B17",          // Dark Espresso Text
+  muted: "#66564D",         // Darker Muted Text
   white: "#FFFFFF",
-  
+
   // Status Colors
-  success: "#6F9B72",
-  warning: "#D89B3D",
-  danger: "#C95C54",
+  success: "#5D8561",       // Darker Green
+  warning: "#B87E2E",       // Darker Amber
+  danger: "#B64D47",        // Darker Red
 };

@@ -172,103 +172,87 @@ export function ForgotPasswordScreen() {
 
   return (
     <AnimatedScreen>
-    <KeyboardAvoidingView
-      style={keyboardAvoidingViewStyle}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={scrollContentStyle}
+      <KeyboardAvoidingView
+        style={keyboardAvoidingViewStyle}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <View style={logoContainerStyle}>
-          <Image
-            source={require("../assets/ERef-Logo.png")}
-            resizeMode="contain"
-            style={logoImageStyle}
-          />
-
-          <Text style={logoTaglineStyle}>
-            Scan, predict, and reduce food waste.
-          </Text>
-        </View>
-
-        <View style={titleContainerStyle}>
-          <Text style={titleStyle}>
-            Forgot your password?
-          </Text>
-
-          <Text style={subtitleStyle}>
-            Enter the details below
-          </Text>
-        </View>
-
-        <View style={emailContainerStyle}>
-          <Text style={emailLabelStyle}>
-            Verify Your Email:
-          </Text>
-
-          <TextInput
-            value={email}
-            onChangeText={(text) => {
-              setEmail(text);
-              setError("");
-            }}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder=""
-            style={emailInputStyle}
-          />
-        </View>
-
-        {error ? (
-          <Text style={errorTextStyle}>
-            {error}
-          </Text>
-        ) : null}
-
-        <AnimatedTouchableOpacity
-          onPress={handleEnter}
-          activeOpacity={0.8}
-          style={enterButtonStyle}
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={scrollContentStyle}
         >
-          <Text style={enterButtonTextStyle}>
-            Enter
-          </Text>
-        </AnimatedTouchableOpacity>
-      </ScrollView>
-      <Modal
-        visible={showNotice}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setShowNotice(false)}
-      >
-        <View style={modalBackdropStyle}>
-          <View style={modalContainerStyle}>
-            <Text style={modalTitleStyle}>
-              Notice
-            </Text>
+          <View style={logoContainerStyle}>
+            <Image
+              source={require("../assets/ERef-Logo.png")}
+              resizeMode="contain"
+              style={logoImageStyle}
+            />
 
-            <Text style={modalMessageStyle}>
-              Kindly check your email for the code
+            <Text style={logoTaglineStyle}>
+              Scan, predict, and reduce food waste.
             </Text>
-
-            <AnimatedTouchableOpacity
-              onPress={() => {
-                setShowNotice(false);
-                navigation.navigate("VerifyCode");
-              }}
-              activeOpacity={0.8}
-              style={modalCloseButtonStyle}
-            >
-              <Text style={modalCloseTextStyle}>
-                Close
-              </Text>
-            </AnimatedTouchableOpacity>
           </View>
-        </View>
-      </Modal>
-    </KeyboardAvoidingView>
-      </AnimatedScreen>
+
+          <View style={titleContainerStyle}>
+            <Text style={titleStyle}>Forgot your password?</Text>
+
+            <Text style={subtitleStyle}>Enter the details below</Text>
+          </View>
+
+          <View style={emailContainerStyle}>
+            <Text style={emailLabelStyle}>Verify Your Email:</Text>
+
+            <TextInput
+              value={email}
+              onChangeText={(text) => {
+                setEmail(text);
+                setError("");
+              }}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder=""
+              style={emailInputStyle}
+            />
+          </View>
+
+          {error ? <Text style={errorTextStyle}>{error}</Text> : null}
+
+          <AnimatedTouchableOpacity
+            onPress={handleEnter}
+            activeOpacity={0.8}
+            style={enterButtonStyle}
+          >
+            <Text style={enterButtonTextStyle}>Enter</Text>
+          </AnimatedTouchableOpacity>
+        </ScrollView>
+        <Modal
+          visible={showNotice}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setShowNotice(false)}
+        >
+          <View style={modalBackdropStyle}>
+            <View style={modalContainerStyle}>
+              <Text style={modalTitleStyle}>Notice</Text>
+
+              <Text style={modalMessageStyle}>
+                Kindly check your email for the code
+              </Text>
+
+              <AnimatedTouchableOpacity
+                onPress={() => {
+                  setShowNotice(false);
+                  navigation.navigate("VerifyCode");
+                }}
+                activeOpacity={0.8}
+                style={modalCloseButtonStyle}
+              >
+                <Text style={modalCloseTextStyle}>Close</Text>
+              </AnimatedTouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+      </KeyboardAvoidingView>
+    </AnimatedScreen>
   );
 }

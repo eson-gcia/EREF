@@ -23,38 +23,54 @@ export function AnimatedScreen({
 
     const startPosition =
       direction === "left"
-        ? -24
+        ? -20
         : direction === "right"
-          ? 24
+          ? 20
           : 0;
+
+    opacity.stopAnimation();
+    translateX.stopAnimation();
+    scale.stopAnimation();
 
     opacity.setValue(0);
     translateX.setValue(startPosition);
     scale.setValue(direction === "center" ? 0.96 : 0.985);
 
-    Animated.parallel([
+    const animation = Animated.parallel([
       Animated.timing(opacity, {
         toValue: 1,
-        duration: 260,
+        duration: 220,
         easing: Easing.out(Easing.cubic),
         useNativeDriver: true,
       }),
 
       Animated.timing(translateX, {
         toValue: 0,
-        duration: 300,
+        duration: 260,
         easing: Easing.out(Easing.cubic),
         useNativeDriver: true,
       }),
 
       Animated.timing(scale, {
         toValue: 1,
-        duration: 300,
+        duration: 260,
         easing: Easing.out(Easing.cubic),
         useNativeDriver: true,
       }),
-    ]).start();
-  }, [isFocused, direction, opacity, translateX, scale]);
+    ]);
+
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
+  }, [
+    isFocused,
+    direction,
+    opacity,
+    translateX,
+    scale,
+  ]);
 
   return (
     <Animated.View

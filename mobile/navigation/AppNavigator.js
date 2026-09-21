@@ -1,4 +1,3 @@
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -24,12 +23,9 @@ export default function AppNavigator() {
       screenOptions={({ route }) => ({
         headerShown: false,
 
-        // Built-in tab animation.
-        // "fade" gives a soft cross-fade.
-        // "shift" gives a small horizontal movement.
-animation: "shift",
         tabBarActiveTintColor: "#5C4033",
         tabBarInactiveTintColor: "#7A6A60",
+
         tabBarStyle: {
           height: 68,
           paddingBottom: 8,

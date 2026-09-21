@@ -185,110 +185,88 @@ export function VerifyCodeScreen() {
 
   return (
     <AnimatedScreen>
-    <KeyboardAvoidingView
-      style={keyboardAvoidingViewStyle}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={scrollContentStyle}
+      <KeyboardAvoidingView
+        style={keyboardAvoidingViewStyle}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <View style={logoContainerStyle}>
-          <Image
-            source={require("../assets/ERef-Logo.png")}
-            resizeMode="contain"
-            style={logoImageStyle}
-          />
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={scrollContentStyle}
+        >
+          <View style={logoContainerStyle}>
+            <Image
+              source={require("../assets/ERef-Logo.png")}
+              resizeMode="contain"
+              style={logoImageStyle}
+            />
 
-          <Text style={logoTaglineStyle}>
-            Scan, predict, and reduce food waste.
-          </Text>
-        </View>
+            <Text style={logoTaglineStyle}>
+              Scan, predict, and reduce food waste.
+            </Text>
+          </View>
 
-        <View style={titleContainerStyle}>
-          <Text style={titleStyle}>
-            Forgot your password?
-          </Text>
+          <View style={titleContainerStyle}>
+            <Text style={titleStyle}>Forgot your password?</Text>
 
-          <Text style={subtitleStyle}>
-            Enter the details below
-          </Text>
-        </View>
+            <Text style={subtitleStyle}>Enter the details below</Text>
+          </View>
 
-        <View style={emailContainerStyle}>
-          <Text style={emailLabelStyle}>
-            Verify Your Email:
-          </Text>
+          <View style={emailContainerStyle}>
+            <Text style={emailLabelStyle}>Verify Your Email:</Text>
 
-          <TextInput
-            value={email}
-            editable={false}
-            style={emailDisplayInputStyle}
-          />
-        </View>
+            <TextInput
+              value={email}
+              editable={false}
+              style={emailDisplayInputStyle}
+            />
+          </View>
 
-        <View style={changeEmailRowStyle}>
-          <Text style={changeEmailTextStyle}>
-            Not your email?
-          </Text>
+          <View style={changeEmailRowStyle}>
+            <Text style={changeEmailTextStyle}>Not your email?</Text>
+
+            <AnimatedTouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={changeEmailLinkStyle}
+            >
+              <Text style={changeEmailLinkStyle}>Change Email</Text>
+            </AnimatedTouchableOpacity>
+          </View>
+
+          <View style={codeContainerStyle}>
+            <Text style={codeLabelStyle}>Enter Code:</Text>
+
+            <TextInput
+              value={code}
+              onChangeText={(text) => {
+                setCode(text);
+                setError("");
+              }}
+              keyboardType="number-pad"
+              maxLength={6}
+              placeholder=""
+              style={codeInputStyle}
+            />
+          </View>
+
+          <View style={refreshRowStyle}>
+            <Text style={refreshTextStyle}>Did not receive the code yet?</Text>
+
+            <AnimatedTouchableOpacity onPress={handleRefreshCode}>
+              <Text style={refreshLinkStyle}>Refresh Code</Text>
+            </AnimatedTouchableOpacity>
+          </View>
+
+          {error ? <Text style={errorTextStyle}>{error}</Text> : null}
 
           <AnimatedTouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={changeEmailLinkStyle}
+            onPress={handleChangePassword}
+            activeOpacity={0.8}
+            style={changePasswordButtonStyle}
           >
-            <Text style={changeEmailLinkStyle}>
-              Change Email
-            </Text>
+            <Text style={changePasswordButtonTextStyle}>Change Password</Text>
           </AnimatedTouchableOpacity>
-        </View>
-
-        <View style={codeContainerStyle}>
-          <Text style={codeLabelStyle}>
-            Enter Code:
-          </Text>
-
-          <TextInput
-            value={code}
-            onChangeText={(text) => {
-              setCode(text);
-              setError("");
-            }}
-            keyboardType="number-pad"
-            maxLength={6}
-            placeholder=""
-            style={codeInputStyle}
-          />
-        </View>
-
-        <View style={refreshRowStyle}>
-          <Text style={refreshTextStyle}>
-            Did not receive the code yet?
-          </Text>
-
-          <AnimatedTouchableOpacity onPress={handleRefreshCode}>
-            <Text style={refreshLinkStyle}>
-              Refresh Code
-            </Text>
-          </AnimatedTouchableOpacity>
-        </View>
-
-        {error ? (
-          <Text style={errorTextStyle}>
-            {error}
-          </Text>
-        ) : null}
-
-        <AnimatedTouchableOpacity
-          onPress={handleChangePassword}
-          activeOpacity={0.8}
-          style={changePasswordButtonStyle}
-        >
-          <Text style={changePasswordButtonTextStyle}>
-            Change Password
-          </Text>
-        </AnimatedTouchableOpacity>
-      </ScrollView>
-    </KeyboardAvoidingView>
-      </AnimatedScreen>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </AnimatedScreen>
   );
 }

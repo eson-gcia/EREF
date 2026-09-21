@@ -187,6 +187,6 @@ export function AlertsScreen() {
           ))
         )}
       </ScrollView>
-      </AnimatedScreen>
+    </AnimatedScreen>
   );
 }
